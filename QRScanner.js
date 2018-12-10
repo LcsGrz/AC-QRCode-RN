@@ -19,7 +19,6 @@ import
 } from 'react-native';
 
 const IS_ANDROID = Platform.OS === 'android';
-
 /**
  * 扫描界面遮罩
  * 单独写一个类，方便拷贝使用
@@ -28,6 +27,7 @@ class QRScannerRectView extends Component {
     static defaultProps = {
         maskColor: '#0000004D',
         cornerColor: '#22ff00',
+        cornerRadius: 0,
         borderColor: '#000000',
         rectHeight: 200,
         rectWidth: 200,
@@ -99,6 +99,7 @@ class QRScannerRectView extends Component {
     getCornerColor() {
         return ({
             borderColor: this.props.cornerColor,
+            
         });
     }
 
@@ -121,6 +122,7 @@ class QRScannerRectView extends Component {
     getBorderColor() {
         return ({
             borderColor: this.props.borderColor,
+            borderRadius: this.props.cornerRadius,
         });
     }
 
@@ -261,6 +263,7 @@ class QRScannerRectView extends Component {
                         styles.topLeftCorner,
                         {
                             borderLeftWidth: this.props.cornerBorderWidth,
+                            borderTopLeftRadius: this.props.cornerRadius,
                             borderTopWidth: this.props.cornerBorderWidth,
                         }
                     ]}/>
@@ -272,6 +275,7 @@ class QRScannerRectView extends Component {
                         styles.topRightCorner,
                         {
                             borderRightWidth: this.props.cornerBorderWidth,
+                            borderTopRightRadius: this.props.cornerRadius,
                             borderTopWidth: this.props.cornerBorderWidth,
                         }
                     ]}/>
@@ -286,6 +290,7 @@ class QRScannerRectView extends Component {
                         styles.bottomLeftCorner,
                         {
                             borderLeftWidth: this.props.cornerBorderWidth,
+                            borderBottomLeftRadius: this.props.cornerRadius,
                             borderBottomWidth: this.props.cornerBorderWidth,
                         }
                     ]}/>
@@ -297,6 +302,7 @@ class QRScannerRectView extends Component {
                         styles.bottomRightCorner,
                         {
                             borderRightWidth: this.props.cornerBorderWidth,
+                            borderBottomRightRadius: this.props.cornerRadius,
                             borderBottomWidth: this.props.cornerBorderWidth,
                         }
                     ]}/>
@@ -367,6 +373,7 @@ export default class QRScannerView extends Component {
         maskColor: PropTypes.string,
         borderColor: PropTypes.string,
         cornerColor: PropTypes.string,
+        cornerRadius: PropTypes.number,
         borderWidth: PropTypes.number,
         cornerBorderWidth: PropTypes.number,
         cornerBorderLength: PropTypes.number,
@@ -411,6 +418,7 @@ export default class QRScannerView extends Component {
                     <QRScannerRectView
                         maskColor={this.props.maskColor}
                         cornerColor={this.props.cornerColor}
+                        cornerRadius={this.props.cornerRadius}
                         borderColor={this.props.borderColor}
                         rectHeight={this.props.rectHeight}
                         rectWidth={this.props.rectWidth}
@@ -504,3 +512,4 @@ const styles = StyleSheet.create({
         bottom: 0,
     }
 });
+
