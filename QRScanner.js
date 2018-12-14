@@ -46,7 +46,7 @@ class QRScannerRectView extends Component {
         hintText: '将二维码/条码放入框内，即可自动扫描',
         hintTextStyle: {color: '#fff', fontSize: 14,backgroundColor:'transparent'},
         hintTextPosition: 130,
-        isShowScanBar:true
+        isShowScanBar:true,
     };
 
     constructor(props) {
@@ -397,6 +397,10 @@ export default class QRScannerView extends Component {
         bottomMenuStyle: PropTypes.object,
         onScanResultReceived: PropTypes.func,
     };
+
+    static defaultProps = {
+        renderTopBarView: () => {}
+    }
 
     constructor(props) {
         super(props);
